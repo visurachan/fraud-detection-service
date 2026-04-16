@@ -2,6 +2,8 @@ package com.banking.fraud_detection_service.alert;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 
@@ -38,14 +40,9 @@ public class FraudAlert {
     @Column(nullable = false)
     private AlertStatus status;
 
-    @Column(nullable = false)
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
-    public enum Severity {
-        LOW, MEDIUM, HIGH
-    }
 
-    public enum AlertStatus {
-        OPEN, REVIEWED, DISMISSED
-    }
 }

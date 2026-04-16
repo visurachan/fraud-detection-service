@@ -2,6 +2,8 @@ package com.banking.fraud_detection_service.kafka.consumer;
 
 
 import com.banking.fraud_detection_service.kafka.event.TransactionCreatedEvent;
+import com.banking.fraud_detection_service.rule.FraudEvaluationService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -11,7 +13,10 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class TransactionEventConsumer {
+
+    private final FraudEvaluationService fraudEvaluationService;
 
     @KafkaListener(
             topics = "transaction.created",
@@ -22,11 +27,11 @@ public class TransactionEventConsumer {
             @Header(KafkaHeaders.RECEIVED_PARTITION) int partition,
             @Header(KafkaHeaders.OFFSET) long offset
     ) {
-        log.info("Received transaction event: transactionId={}, amount={}, partition={}, offset={}",
+        log.info("Received transaction event: transactionId={}, partition={}, offset={}",
                 event.getTransactionId(),
-                event.getAmount(),
                 partition,
                 offset
         );
+        fraudEvaluationService.evaluate(event);
     }
 }
