@@ -5,7 +5,7 @@ An event-driven fraud detection microservice built with **Java 21**, **Spring Bo
 ---
 ## Architecture
 
-![Architecture](System Architecture.svg)
+![Architecture](architecture.svg)
 
 ## How It Works
 
