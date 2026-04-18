@@ -79,7 +79,7 @@ Prometheus scrapes `/actuator/prometheus` every 15 seconds. Grafana reads from P
 - JVM heap memory over time (time series)
 
 Grafana runs at `http://localhost:3000` (admin/admin) when the stack is running locally.
-
+![Grafana Dashboard](dashboard.png)
 ---
 
 ## API Endpoints
