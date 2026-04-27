@@ -139,8 +139,13 @@ The default `application.yml` is configured for local Docker Compose setup. No a
 
 ---
 
+
 ## Related Projects
 
-| Project | Description |
-|---|---|
-| [banking-core-api](https://github.com/visurachan/banking-core-api) | Core banking monolith that publishes transaction events consumed by this service |
+This service is part of a microservices banking system:
+
+| Service                                                                  | Description |
+|--------------------------------------------------------------------------|---|
+| [Banking Core API](https://github.com/visurachan/banking-core-api)       | Customer-facing banking monolith that publishes transaction events consumed by this service |
+| [Rate Limiter Service](https://github.com/visurachan/rate-limiter)       | Distributed rate limiting |
+
